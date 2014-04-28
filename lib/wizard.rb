@@ -29,6 +29,7 @@ module GAGame
       @strength = DEFAULT_STRENGTH
 
       @@total_wizards += 1
+      talk "Created Wizard #{full_name}"
     end
 
   end # end class
