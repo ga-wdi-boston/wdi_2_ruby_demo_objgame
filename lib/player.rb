@@ -1,6 +1,14 @@
 require_relative 'person'
+# require the Talker module
+require_relative 'talker'
 
-class Player < Person
+module GAGame
+  class Player < Person
+
+  # Mixin the Talker module
+  # This will inject/mixin/add all the methods in the 
+  # Talker module into this class.
+  include Talker
 
   # Create Class Constants
   DEFAULT_HEALTH = 20
@@ -13,6 +21,8 @@ class Player < Person
     super(first_name, last_name)
     @health  = DEFAULT_HEALTH
     @strength = DEFAULT_STRENGTH
+
+    talk("Created #{full_name}")
   end
 
   def alive?
@@ -27,12 +37,17 @@ class Player < Person
 
   # Attack another player with this players strength
   def attack(opponent)
-    opponent.take_damage(strength)
+    if alive?
+      opponent.take_damage(strength) 
+      talk("#{full_name} is attacking #{opponent.full_name}")
+    else
+      talk "Hey, you #{last_name} you dead WTF!!"
+    end
   end
 
 end
 
-
+end
 
 
 
