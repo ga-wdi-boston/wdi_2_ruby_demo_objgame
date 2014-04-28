@@ -14,11 +14,19 @@ module GAGame
   DEFAULT_HEALTH = 20
   DEFAULT_STRENGTH = 5
 
+  @@all_players = [ ]
+
   @@total_players = 0 
 
   # Getter for the total_num class variable
   def self.total_players
     @@total_players
+  end
+
+  def self.find_by_first_name(fname)
+    @@all_players.select do |player|
+      player.first_name ==  fname
+    end
   end
 
   attr_reader :health, :strength
@@ -31,6 +39,8 @@ module GAGame
 
     @@total_players += 1
     # talk("Created #{full_name}")
+
+    @@all_players << self
   end
 
   def alive?

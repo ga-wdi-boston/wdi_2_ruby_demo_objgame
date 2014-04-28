@@ -24,6 +24,11 @@ puts  "Total # of wizards = #{GAGame::Wizard.total_wizards}"
 # 7 Players
 puts  "Total # of player = #{GAGame::Player.total_players}"
 
+GAGame::Wizard.new("Jack", "Sprat")
+GAGame::Knight.new("Jack", "Sparrow")
+
+all_jacks = GAGame::Player.find_by_first_name('Jack')
+puts "All jacks are #{all_jacks}"
 
 
 
