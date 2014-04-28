@@ -3,6 +3,17 @@ require_relative 'magic'
 
 module GAGame
   class Wizard < Player
+
+    # Class variable 
+    @@total_wizards = 0
+
+    # Create a class method that will return the 
+    # class variable @@total_wizards
+    # Wizard.total_wizards
+    def self.total_wizards
+      @@total_wizards
+    end
+
     include Magic
 
     # CONSTANTS DON'T CHANGE!!!
@@ -16,6 +27,8 @@ module GAGame
       super
       @health = DEFAULT_HEALTH
       @strength = DEFAULT_STRENGTH
+
+      @@total_wizards += 1
     end
 
   end # end class

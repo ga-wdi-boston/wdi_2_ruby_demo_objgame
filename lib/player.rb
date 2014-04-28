@@ -13,7 +13,14 @@ module GAGame
   # Create Class Constants
   DEFAULT_HEALTH = 20
   DEFAULT_STRENGTH = 5
-  
+
+  @@total_players = 0 
+
+  # Getter for the total_num class variable
+  def self.total_players
+    @@total_players
+  end
+
   attr_reader :health, :strength
 
   def initialize(first_name, last_name)
@@ -22,7 +29,8 @@ module GAGame
     @health  = DEFAULT_HEALTH
     @strength = DEFAULT_STRENGTH
 
-    talk("Created #{full_name}")
+    @@total_players += 1
+    # talk("Created #{full_name}")
   end
 
   def alive?
